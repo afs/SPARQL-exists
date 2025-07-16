@@ -13,6 +13,11 @@ PREFIX sparql: <http://www.w3.org/ns/sparql#>
        :exists-filter-01
        :exists-filter-02
        :exists-filter-03
+       :exists-filter-04
+       :exists-filter-05
+
+       :exists-optional-filter-01
+       :exists-optional-filter-02
 
        :not-exists-filter-01
        :not-exists-filter-02
@@ -48,6 +53,42 @@ PREFIX sparql: <http://www.w3.org/ns/sparql#>
 	mf:feature sparql:exists ;
     mf:action
          [ qt:query  <exists-filter-03.rq> ;
+           qt:data   <empty.nt> ] ;
+    mf:result  <results-one.srj>
+    .
+
+:exists-filter-04 rdf:type mf:QueryEvaluationTest ;
+    mf:name "EXISTS - nested FILTER";
+	mf:feature sparql:exists ;
+    mf:action
+         [ qt:query  <exists-filter-04.rq> ;
+           qt:data   <empty.nt> ] ;
+    mf:result  <results-one.srj>
+    .
+
+:exists-filter-05 rdf:type mf:QueryEvaluationTest ;
+    mf:name "EXISTS - different nested FILTER";
+	mf:feature sparql:exists ;
+    mf:action
+         [ qt:query  <exists-filter-05.rq> ;
+           qt:data   <empty.nt> ] ;
+    mf:result  <results-zero.srj>
+    .
+
+:exists-optional-filter-01 rdf:type mf:QueryEvaluationTest ;
+    mf:name "EXISTS - OPTIONAL - FILTER";
+	mf:feature sparql:exists ;
+    mf:action
+         [ qt:query  <exists-optional-filter-01.rq> ;
+           qt:data   <empty.nt> ] ;
+    mf:result  <results-one.srj>
+    .
+
+:exists-optional-filter-02 rdf:type mf:QueryEvaluationTest ;
+    mf:name "EXISTS - OPTIONAL - FILTER(true)";
+	mf:feature sparql:exists ;
+    mf:action
+         [ qt:query  <exists-optional-filter-02.rq> ;
            qt:data   <empty.nt> ] ;
     mf:result  <results-one.srj>
     .
